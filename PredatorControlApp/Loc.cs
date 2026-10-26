@@ -1,4 +1,5 @@
 using System.Globalization;
+using Microsoft.Win32;
 
 namespace PredatorControlApp
 {
@@ -153,10 +154,43 @@ namespace PredatorControlApp
 
             // Controls
             ["Select..."] = "请选择...",
+
+            // Language
+            ["LANGUAGE"] = "语言",
+            ["Follow Windows"] = "跟随系统",
+            ["Language"] = "语言",
+            ["Restart Predator Control now to use the new language?"] = "需要重启 Predator Control 才能切换语言。现在重启吗？",
         };
 
-        // Declared after ZhHans: static fields initialize in source order.
+        // Language picked in the app: "auto" follows the Windows display language.
+        // Order matches the language drop-down.
+        internal static readonly string[] Languages = { "auto", "en", "zh-Hans" };
+
+        internal static bool UseChinese(string language, CultureInfo ui) => language switch
+        {
+            "auto" => IsSimplifiedChinese(ui),
+            "en" => false,
+            "zh-Hans" => true,
+            _ => throw new InvalidDataException(
+                $@"Unknown Language value '{language}' in HKCU\SOFTWARE\PredatorControl")
+        };
+
+        internal static void SaveLanguage(string language)
+        {
+            using var key = Registry.CurrentUser.CreateSubKey(@"SOFTWARE\PredatorControl");
+            key.SetValue("Language", language);
+        }
+
+        private static string ReadLanguage()
+        {
+            using var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\PredatorControl");
+            return key?.GetValue("Language") as string ?? "auto";
+        }
+
+        // Static fields initialize in source order: these must stay after ZhHans.
+        internal static readonly string Language = ReadLanguage();
+
         private static readonly Dictionary<string, string>? Table =
-            IsSimplifiedChinese(CultureInfo.CurrentUICulture) ? ZhHans : null;
+            UseChinese(Language, CultureInfo.CurrentUICulture) ? ZhHans : null;
     }
 }

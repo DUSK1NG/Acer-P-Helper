@@ -782,6 +782,34 @@ namespace PredatorControlApp
             };
 
             y += switchH + S(28);
+            MakeSectionHeader(Loc.T("LANGUAGE"), pad, y);
+
+            y += S(24);
+            int langDropH = S(30);
+            var cboLanguage = new PredatorDropDown { Location = new Point(pad, y), Size = new Size(contentW, langDropH) };
+            cboLanguage.Items.AddRange(new[] { Loc.T("Follow Windows"), "English", "简体中文" });
+            cboLanguage.SelectedIndex = Array.IndexOf(Loc.Languages, Loc.Language);
+            _contentPanel.Controls.Add(cboLanguage);
+
+            cboLanguage.SelectedIndexChanged += (s, e) =>
+            {
+                string picked = Loc.Languages[cboLanguage.SelectedIndex];
+                Loc.SaveLanguage(picked);
+
+                var ui = System.Globalization.CultureInfo.CurrentUICulture;
+                if (Loc.UseChinese(picked, ui) == Loc.UseChinese(Loc.Language, ui)) return;
+
+                var answer = MessageBox.Show(this, Loc.T("Restart Predator Control now to use the new language?"),
+                    Loc.T("Language"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (answer != DialogResult.Yes) return;
+
+                // OnFormClosing releases the single-instance mutex, so the new process can take it.
+                _isClosing = true;
+                Application.Exit();
+                Process.Start(Environment.ProcessPath!);
+            };
+
+            y += langDropH + S(28);
             MakeSectionHeader(Loc.T("KEYBOARD RGB MODE"), pad, y);
             
             y += S(24);
