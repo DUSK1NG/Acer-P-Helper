@@ -263,7 +263,7 @@ namespace PredatorControlApp
                 Text = title,
                 Location = new Point(14, 9),
                 AutoSize = true,
-                Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                Font = new Font(Loc.UiFont, 10f, FontStyle.Bold),
                 ForeColor = TitleTextColor,
                 BackColor = Color.Transparent
             };
@@ -276,7 +276,7 @@ namespace PredatorControlApp
                 Location = new Point(W - Bar, 0),
                 Size = new Size(Bar, Bar),
                 TextAlign = ContentAlignment.MiddleCenter,
-                Font = new Font("Segoe UI", 10f),
+                Font = new Font(Loc.UiFont, 10f),
                 ForeColor = TitleTextColor,
                 Cursor = Cursors.Hand
             };
@@ -297,7 +297,7 @@ namespace PredatorControlApp
                 Text = subtitle,
                 Location = new Point(Pad, Bar + 16),
                 Size = new Size(W - Pad * 2, 48),
-                Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                Font = new Font(Loc.UiFont, 10f, FontStyle.Bold),
                 ForeColor = TextColor,
                 BackColor = Color.Transparent
             });
@@ -314,7 +314,7 @@ namespace PredatorControlApp
                 BorderStyle = BorderStyle.FixedSingle,
                 BackColor = PanelBg,
                 ForeColor = BodyColor,
-                Font = new Font("Segoe UI", 9.5f)
+                Font = new Font(Loc.UiFont, 9.5f)
             };
             dlg.Controls.Add(txt);
 

@@ -29,7 +29,7 @@ namespace PredatorControlApp
         private static readonly Color FlashGreen = Color.FromArgb(0, 180, 80);
         private static readonly Color FlashRed = Color.FromArgb(220, 50, 50);
 
-        private static readonly Font FontTitle = new("Segoe UI", 10f, FontStyle.Bold);
+        private static readonly Font FontTitle = new(Loc.UiFont, 10f, FontStyle.Bold);
 
         #endregion
 
@@ -135,7 +135,7 @@ namespace PredatorControlApp
             var lblClose = new Label
             {
                 Text = "✕",
-                Font = new Font("Segoe UI", 10f, FontStyle.Bold),
+                Font = new Font(Loc.UiFont, 10f, FontStyle.Bold),
                 ForeColor = Color.FromArgb(140, 140, 145),
                 AutoSize = true,
                 Cursor = Cursors.Hand,

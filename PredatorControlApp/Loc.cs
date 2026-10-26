@@ -192,5 +192,8 @@ namespace PredatorControlApp
 
         private static readonly Dictionary<string, string>? Table =
             UseChinese(Language, CultureInfo.CurrentUICulture) ? ZhHans : null;
+
+        // One font for Latin and CJK text, so mixed strings render at one size.
+        internal static readonly string UiFont = Table != null ? "Microsoft YaHei UI" : "Segoe UI";
     }
 }

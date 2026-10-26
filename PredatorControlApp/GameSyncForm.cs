@@ -16,9 +16,9 @@ namespace PredatorControlApp
         private static readonly Color AccentColor = Color.FromArgb(0, 200, 160);
         private static readonly Color TextColor = Color.FromArgb(210, 210, 215);
 
-        private static readonly Font FontTitle = new("Segoe UI", 11f, FontStyle.Bold);
-        private static readonly Font FontSection = new("Segoe UI", 8.5f, FontStyle.Bold);
-        private static readonly Font FontBody = new("Segoe UI", 9.5f, FontStyle.Regular);
+        private static readonly Font FontTitle = new(Loc.UiFont, 11f, FontStyle.Bold);
+        private static readonly Font FontSection = new(Loc.UiFont, 8.5f, FontStyle.Bold);
+        private static readonly Font FontBody = new(Loc.UiFont, 9.5f, FontStyle.Regular);
 
         #endregion
 
@@ -551,8 +551,8 @@ namespace PredatorControlApp
             var dlgBorder= Color.FromArgb(55, 55, 62);
             var dlgText  = Color.FromArgb(210, 210, 215);
             var dlgSub   = Color.FromArgb(140, 140, 150);
-            var titleFont= new Font("Segoe UI", 10f, FontStyle.Bold);
-            var bodyFont = new Font("Segoe UI", 9.25f);
+            var titleFont= new Font(Loc.UiFont, 10f, FontStyle.Bold);
+            var bodyFont = new Font(Loc.UiFont, 9.25f);
 
             using var dlg = new Form
             {

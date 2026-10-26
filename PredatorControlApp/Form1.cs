@@ -130,11 +130,11 @@ namespace PredatorControlApp
         private static readonly Color SubHeaderColor = Color.FromArgb(100, 100, 110);
         private static readonly Color AccentColor = Color.FromArgb(0, 200, 160);
 
-        private static readonly Font FontTitle = new("Segoe UI", 9.5f, FontStyle.Bold);
-        private static readonly Font FontSectionHeader = new("Segoe UI", 8.5f, FontStyle.Bold);
-        private static readonly Font FontHeaderLight = new("Segoe UI", 8.5f, FontStyle.Regular);
-        private static readonly Font FontBody = new("Segoe UI", 9.5f, FontStyle.Regular);
-        private static readonly Font FontBodyBold = new("Segoe UI", 9.5f, FontStyle.Bold);
+        private static readonly Font FontTitle = new(Loc.UiFont, 9.5f, FontStyle.Bold);
+        private static readonly Font FontSectionHeader = new(Loc.UiFont, 8.5f, FontStyle.Bold);
+        private static readonly Font FontHeaderLight = new(Loc.UiFont, 8.5f, FontStyle.Regular);
+        private static readonly Font FontBody = new(Loc.UiFont, 9.5f, FontStyle.Regular);
+        private static readonly Font FontBodyBold = new(Loc.UiFont, 9.5f, FontStyle.Bold);
 
         private Label _lblTitle = null!, _lblCpuTemp = null!, _lblGpuTemp = null!;
         private Label _lblCpuRpm = null!, _lblGpuRpm = null!;
