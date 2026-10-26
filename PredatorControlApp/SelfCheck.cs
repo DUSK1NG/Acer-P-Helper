@@ -33,6 +33,11 @@ namespace PredatorControlApp
             Debug.Assert(Form1.CurveStepReached(40, 45), "a full step must write");
             Debug.Assert(Form1.CurveStepReached(40, 35), "a full step down must write");
 
+            Debug.Assert(Loc.IsSimplifiedChinese(new System.Globalization.CultureInfo("zh-CN")), "zh-CN must use Chinese");
+            Debug.Assert(!Loc.IsSimplifiedChinese(new System.Globalization.CultureInfo("en-US")), "en-US must stay English");
+            Debug.Assert(!Loc.IsSimplifiedChinese(System.Globalization.CultureInfo.CurrentUICulture) || Loc.T("Quiet") != "Quiet",
+                "Chinese UI culture must load the translation table");
+
             CheckPowerLineDebounce();
         }
 

@@ -81,7 +81,7 @@ namespace PredatorControlApp
 
         public FanCurveForm()
         {
-            Text = "Fan Curve Editor";
+            Text = Loc.T("Fan Curve Editor");
             FormBorderStyle = FormBorderStyle.None;
             StartPosition = FormStartPosition.CenterParent;
             BackColor = FormBg;
@@ -122,7 +122,7 @@ namespace PredatorControlApp
 
             var lblTitle = new Label
             {
-                Text = "Fan Curve Editor",
+                Text = Loc.T("Fan Curve Editor"),
                 Font = FontTitle,
                 ForeColor = TitleTextColor,
                 AutoSize = true,
@@ -157,7 +157,7 @@ namespace PredatorControlApp
             _graphCpu = new FanCurveGraph
             {
                 CurveColor = CpuCurveColor,
-                FanLabel = "CPU FAN CURVE",
+                FanLabel = Loc.T("CPU FAN CURVE"),
                 Location = new Point(SidePad, y),
                 Size = new Size(ClientSize.Width - SidePad * 2, GraphHeight)
             };
@@ -170,7 +170,7 @@ namespace PredatorControlApp
             _graphGpu = new FanCurveGraph
             {
                 CurveColor = GpuCurveColor,
-                FanLabel = "GPU FAN CURVE",
+                FanLabel = Loc.T("GPU FAN CURVE"),
                 Location = new Point(SidePad, y),
                 Size = new Size(ClientSize.Width - SidePad * 2, GraphHeight)
             };
@@ -186,7 +186,7 @@ namespace PredatorControlApp
 
             _btnReset = new PredatorButton
             {
-                Text = "Reset",
+                Text = Loc.T("Reset"),
                 Size = new Size(btnWidth, btnHeight),
                 Location = new Point(SidePad, btnY)
             };
@@ -195,7 +195,7 @@ namespace PredatorControlApp
 
             _btnApply = new PredatorButton
             {
-                Text = "Apply",
+                Text = Loc.T("Apply"),
                 Size = new Size(btnWidth, btnHeight),
                 Location = new Point(ClientSize.Width - SidePad - btnWidth, btnY)
             };
