@@ -169,13 +169,12 @@ namespace PredatorControlApp
 
             if (Version.TryParse(version, out var v) && Norm(v) > Current)
             {
-                MessageBox.Show(owner, $"The update to v{version} could not be installed - you're still on v{CurrentText}.\n\n" +
-                    "This usually means the app file was locked or write-protected. Try again, or download it manually from GitHub.",
+                MessageBox.Show(owner, Loc.F("The update to v{0} could not be installed - you're still on v{1}.\n\nThis usually means the app file was locked or write-protected. Try again, or download it manually from GitHub.", version, CurrentText),
                     "Predator Control", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            ShowNotes(owner, $"Updated to v{version}", "What's new", notes!, confirm: false);
+            ShowNotes(owner, Loc.F("Updated to v{0}", version), Loc.T("What's new"), notes!, confirm: false);
         }
 
         #endregion
@@ -321,7 +320,7 @@ namespace PredatorControlApp
 
             var btnPrimary = new PredatorButton
             {
-                Text = confirm ? "Update Now" : "Close",
+                Text = confirm ? Loc.T("Update Now") : Loc.T("Close"),
                 Location = new Point(W - Pad - BtnW, btnY),
                 Size = new Size(BtnW, BtnH)
             };
@@ -332,7 +331,7 @@ namespace PredatorControlApp
             {
                 var btnLater = new PredatorButton
                 {
-                    Text = "Later",
+                    Text = Loc.T("Later"),
                     Location = new Point(W - Pad - BtnW * 2 - 12, btnY),
                     Size = new Size(BtnW, BtnH)
                 };

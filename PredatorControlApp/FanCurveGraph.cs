@@ -42,7 +42,7 @@ namespace PredatorControlApp
         private List<Point> _points;
         private Color _curveColor = Color.FromArgb(0, 180, 255);
         private int _currentTemp;
-        private string _fanLabel = "FAN CURVE";
+        private string _fanLabel = Loc.T("FAN CURVE");
         private int _dragIndex = -1;
         private int _hoverIndex = -1;
 

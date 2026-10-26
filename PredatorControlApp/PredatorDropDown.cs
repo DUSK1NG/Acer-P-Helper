@@ -94,7 +94,7 @@ namespace PredatorControlApp
                 g.DrawPath(pen, path);
 
             string displayText = SelectedText;
-            if (string.IsNullOrEmpty(displayText)) displayText = "Select...";
+            if (string.IsNullOrEmpty(displayText)) displayText = Loc.T("Select...");
             var textRect = new Rectangle(12, 0, Width - 36, Height);
             TextRenderer.DrawText(g, displayText, Font, textRect, TextNormal,
                 TextFormatFlags.Left | TextFormatFlags.VerticalCenter | TextFormatFlags.EndEllipsis);
