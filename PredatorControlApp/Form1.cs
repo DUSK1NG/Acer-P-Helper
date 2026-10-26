@@ -1659,7 +1659,7 @@ namespace PredatorControlApp
             int cpuSpeed = InterpolateCurve(_cpuCurvePoints, _cpuTemp);
             int gpuSpeed = InterpolateCurve(_gpuCurvePoints, _gpuTemp);
 
-            if (cpuSpeed != _lastCurveCpuSpeed)
+            if (CurveStepReached(_lastCurveCpuSpeed, cpuSpeed))
             {
                 _wmi.SetCpuFanSpeed((byte)cpuSpeed);
                 _lastCurveCpuSpeed = cpuSpeed;
@@ -1668,7 +1668,7 @@ namespace PredatorControlApp
                 _lblCpuFanSpeedHdr.Text = $"CPU FAN: {cpuSpeed}%";
             }
 
-            if (gpuSpeed != _lastCurveGpuSpeed)
+            if (CurveStepReached(_lastCurveGpuSpeed, gpuSpeed))
             {
                 _wmi.SetGpuFanSpeed((byte)gpuSpeed);
                 _lastCurveGpuSpeed = gpuSpeed;
@@ -1677,6 +1677,13 @@ namespace PredatorControlApp
                 _lblGpuFanSpeedHdr.Text = $"GPU FAN: {gpuSpeed}%";
             }
         }
+
+        // Each fan write is an ACPI/EC call that can stall the system briefly;
+        // ignore the 1-2% swings caused by normal temperature jitter.
+        internal const int CurveWriteStep = 5;
+
+        internal static bool CurveStepReached(int lastWritten, int target) =>
+            lastWritten < 0 || Math.Abs(target - lastWritten) >= CurveWriteStep;
 
         private static int InterpolateCurve(List<Point> curve, int temp)
         {
