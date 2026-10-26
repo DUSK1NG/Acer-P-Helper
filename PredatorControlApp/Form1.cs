@@ -542,18 +542,18 @@ namespace PredatorControlApp
             _lblGpuTemp = MakeLabel("39°C", _formW / 2 + S(46), y, FontBodyBold, Color.White);
 
             y += S(24);
-            MakeLabel(Loc.T("CPU FAN:"), pad, y, FontBody, SubHeaderColor);
-            _lblCpuRpm = MakeLabel("-- RPM", pad + S(64), y, FontBodyBold, Color.White);
+            var lblCpuFan = MakeLabel(Loc.T("CPU FAN:"), pad, y, FontBody, SubHeaderColor);
+            _lblCpuRpm = MakeLabel("-- RPM", lblCpuFan.Left + lblCpuFan.PreferredWidth + S(2), y, FontBodyBold, Color.White);
 
-            MakeLabel(Loc.T("GPU FAN:"), _formW / 2 + S(10), y, FontBody, SubHeaderColor);
-            _lblGpuRpm = MakeLabel("-- RPM", _formW / 2 + S(74), y, FontBodyBold, Color.White);
+            var lblGpuFan = MakeLabel(Loc.T("GPU FAN:"), _formW / 2 + S(10), y, FontBody, SubHeaderColor);
+            _lblGpuRpm = MakeLabel("-- RPM", lblGpuFan.Left + lblGpuFan.PreferredWidth + S(2), y, FontBodyBold, Color.White);
 
             y += S(24);
-            MakeLabel(Loc.T("Fan speed:"), pad, y, FontBody, SubHeaderColor);
-            _lblFanStatus = MakeLabel(Loc.T("Auto"), pad + S(74), y, FontBodyBold, Color.White);
+            var lblFanSpeed = MakeLabel(Loc.T("Fan speed:"), pad, y, FontBody, SubHeaderColor);
+            _lblFanStatus = MakeLabel(Loc.T("Auto"), lblFanSpeed.Left + lblFanSpeed.PreferredWidth + S(2), y, FontBodyBold, Color.White);
 
-            MakeLabel(Loc.T("Power:"), _formW / 2 + S(10), y, FontBody, SubHeaderColor);
-            _lblPowerStatus = MakeLabel(Loc.T("Plugged In"), _formW / 2 + S(56), y, FontBodyBold, Color.White);
+            var lblPower = MakeLabel(Loc.T("Power:"), _formW / 2 + S(10), y, FontBody, SubHeaderColor);
+            _lblPowerStatus = MakeLabel(Loc.T("Plugged In"), lblPower.Left + lblPower.PreferredWidth + S(2), y, FontBodyBold, Color.White);
 
             y += S(30);
             AddSeparator(y);
